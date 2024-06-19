@@ -34,15 +34,10 @@
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
                     opentofu
-                    terraformer
                     terraform-docs
-                    terraform-compliance
                     tfupdate
-                    tftui
-                    tfsec
                     tfk8s
                     checkov
-                    terrascan
                     go-task
                   ];
 
@@ -53,6 +48,21 @@
                   scripts.terraform.exec = ''
                     echo "There is no terraform, only tofu"
                   '';
+                }
+              ];
+            };
+            kubernetes = devenv.lib.mkShell {
+              inherit inputs pkgs;
+              modules = [
+                {
+                  # https://devenv.sh/reference/options/
+                  packages = with pkgs; [
+                    k9s
+                    kubernetes-helm
+                    kubectl
+                    kubectl-gadget
+                    kubecolor
+                  ];
                 }
               ];
             };
