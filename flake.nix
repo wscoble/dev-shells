@@ -26,7 +26,7 @@
             pkgs = nixpkgs.legacyPackages.${system};
           in
           {
-            default = devenv.lib.mkShell {
+            terraform = devenv.lib.mkShell {
               inherit inputs pkgs;
               modules = [
                 {
