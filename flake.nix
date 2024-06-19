@@ -43,6 +43,7 @@
                     tfk8s
                     checkov
                     terrascan
+                    go-task
                   ];
 
                   enterShell = ''
