@@ -31,13 +31,14 @@
               modules = [
                 {
                   # https://devenv.sh/reference/options/
-                  packages = [ pkgs.hello ];
+                  packages = with pkgs; [
+                    opentofu
+                  ];
 
                   enterShell = ''
-                    hello
+                    opentofu --version
                   '';
 
-                  processes.hello.exec = "hello";
                 }
               ];
             };
