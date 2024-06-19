@@ -18,6 +18,7 @@
     {
       packages = forEachSystem (system: {
         devenv-up = self.devShells.${system}.default.config.procfileScript;
+        opentofu = nixpkgs.legacyPackages.${system}.opentofu;
       });
 
       devShells = forEachSystem
@@ -26,7 +27,7 @@
             pkgs = nixpkgs.legacyPackages.${system};
           in
           {
-            terraform = devenv.lib.mkShell {
+            opentofu = devenv.lib.mkShell {
               inherit inputs pkgs;
               modules = [
                 {
@@ -38,7 +39,6 @@
                   enterShell = ''
                     opentofu --version
                   '';
-
                 }
               ];
             };
