@@ -18,7 +18,7 @@
     {
       packages = forEachSystem (system: {
         devenv-up = self.devShells.${system}.default.config.procfileScript;
-        opentofu = nixpkgs.legacyPackages.${system}.opentofu;
+        terraform = self.devShells.${system}.terraform.config.procfileScript;
       });
 
       devShells = forEachSystem
@@ -27,17 +27,30 @@
             pkgs = nixpkgs.legacyPackages.${system};
           in
           {
-            opentofu = devenv.lib.mkShell {
+            terraform = devenv.lib.mkShell {
               inherit inputs pkgs;
               modules = [
                 {
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
                     opentofu
+                    terraformer
+                    terraform-docs
+                    terraform-compliance
+                    tfupdate
+                    tftui
+                    tfsec
+                    tfk8s
+                    checkov
+                    terrascan
                   ];
 
                   enterShell = ''
-                    opentofu --version
+                    tofu --version
+                  '';
+
+                  scripts.terraform.exec = ''
+                    echo "There is no terraform, only tofu"
                   '';
                 }
               ];
