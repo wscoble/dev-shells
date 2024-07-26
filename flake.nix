@@ -33,6 +33,7 @@
                 {
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
+                    awscli2
                     opentofu
                     terraform-docs
                     tfupdate
