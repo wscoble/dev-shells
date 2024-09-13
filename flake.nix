@@ -69,19 +69,19 @@
             };
             nodejs = devenv.lib.mkShell {
               inherit inputs pkgs;
-              modules = [
-                {
+              modules =
+                let
+                  yarn = pkgs.yarn.override { nodejs = pkgs.nodejs_20; };
+                in [{
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
                     nodejs_20
-                    yarn.override { nodejs = nodejs_20; }
-                  ];
+                  ] ++ [ yarn ];
 
                   enterShell = ''
-                    export PATH=$DEVENV_ROOT/node_modules/.bin:$PATH
+                    export PATH=''$DEVENV_ROOT/node_modules/.bin:''$PATH
                   '';
-                }
-              ];
+                }];
             };
           });
     };
