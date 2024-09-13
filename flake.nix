@@ -76,6 +76,10 @@
                     nodejs_20
                     yarn.override { nodejs = nodejs_20; }
                   ];
+
+                  enterShell = ''
+                    export PATH=$DEVENV_ROOT/node_modules/.bin:$PATH
+                  '';
                 }
               ];
             };
