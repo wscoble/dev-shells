@@ -74,6 +74,7 @@
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
                     nodejs_20
+                    yarn.override { nodejs = nodejs_20; }
                   ];
                 }
               ];
