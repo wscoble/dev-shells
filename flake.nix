@@ -67,6 +67,17 @@
                 }
               ];
             };
+            nodejs = devenv.lib.mkShell {
+              inherit inputs pkgs;
+              modules = [
+                {
+                  # https://devenv.sh/reference/options/
+                  packages = with pkgs; [
+                    nodejs_20
+                  ];
+                }
+              ];
+            };
           });
     };
 }
