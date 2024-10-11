@@ -49,6 +49,8 @@
               grype
               nushell
               starship
+              # kickstart
+              nodejs
             ];
           in
           {

@@ -1,0 +1,13 @@
+# Required, name of the template
+name = "terraform-module"
+# Optional, longer form description
+description = "A terraform module for infra self-service"
+# Required, the version of the kickstart schema, currently only `1` is used
+kickstart_version = 1
+
+# A list of variables, the schema is explained in detail below
+[[variables]]
+name = "service_name"
+default = "my-service"
+prompt = "What is the name of this service?"
+validation = "^([a-zA-Z][a-zA-Z0-9_-]+)$"
