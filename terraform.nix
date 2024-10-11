@@ -17,7 +17,7 @@ let
     OUT=$1
     if [ "-h" = "$OUT" ]; then
       echo "Create a new terraform module based on"
-      echo "https://github.com/wscoble/dev-shells/blob/main/templates/infra"
+      echo "https://github.com/wscoble/dev-shells/tree/main/templates/infra"
       echo ""
       echo "Usage:"
       echo "  init-tf-module <directory|optional>"
