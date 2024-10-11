@@ -13,7 +13,7 @@
         (system:
           let
             pkgs = nixpkgs.legacyPackages.${system};
-
+            
             nuconfig = pkgs.writeText "config.nu" ''
               $env.config = {
                 show_banner: false,
@@ -52,7 +52,7 @@
             ];
           in
           {
-            terraform = import ./terraform.nix { inherit inputs pkgs commonPackages shellHook; };
+            terraform = import ./terraform.nix { inherit inputs pkgs commonPackages shellHook nuconfig; };
             # go = import ./go.nix { inherit inputs pkgs commonPackages shellHook; };
             # kubernetes = import ./kubernetes.nix { inherit inputs pkgs; };
             # kubernetes = devenv.lib.mkShell {
