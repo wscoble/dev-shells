@@ -26,7 +26,7 @@ let
       OUT="infra"
     fi
 
-    ${pkgs.kickstart}/bin/kickstart ${./templates/infra} -o $OUT
+    ${pkgs.kickstart}/bin/kickstart ${../templates/infra} -o $OUT
   '';
 in
 pkgs.mkShell {
