@@ -1,8 +1,7 @@
-{ inputs, pkgs, commonPackages, shellHook, nuconfig, ... }:
+{ inputs, pkgs, commonPackages, shellHook, ... }:
 
 let
   docs = pkgs.writeShellScriptBin "docs" ''
-    echo "Welcome to your Terraform development environment!"
     echo "You have access to the following tools:"
     echo "  - tofu: A tool for generating Terraform configurations."
     echo "  - tflint: A linter for Terraform configurations."
@@ -10,7 +9,6 @@ let
     echo "  - opa: A tool for policy management and enforcement."
     echo "  - driftctl: A tool for detecting drift in Terraform configurations."
     echo "  - init-tf-module: A script to initialize a new Terraform module."
-    echo "Explore these tools to streamline your Terraform workflow!"
   '';
 
   init-tf-module = pkgs.writeShellScriptBin "init-tf-module" ''
@@ -33,7 +31,7 @@ let
 in
 pkgs.mkShell {
   inherit shellHook;
-
+  name = "terraform";
   packages = with pkgs; [
     opentofu
     tflint

@@ -5,6 +5,10 @@ description = "A terraform module for infra self-service"
 # Required, the version of the kickstart schema, currently only `1` is used
 kickstart_version = 1
 
+ignore = [
+    "README.md"
+]
+
 # A list of variables, the schema is explained in detail below
 [[variables]]
 name = "service_name"
